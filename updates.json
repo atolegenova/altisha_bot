@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 241986609,
+      "message": {
+        "message_id": 359,
+        "from": {
+          "id": 1029994960,
+          "is_bot": false,
+          "first_name": "Алтынай",
+          "last_name": "Толегенова",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 1029994960,
+          "first_name": "Алтынай",
+          "last_name": "Толегенова",
+          "type": "private"
+        },
+        "date": 1610206722,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 241986610,
+      "message": {
+        "message_id": 361,
+        "from": {
+          "id": 1029994960,
+          "is_bot": false,
+          "first_name": "Алтынай",
+          "last_name": "Толегенова",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 1029994960,
+          "first_name": "Алтынай",
+          "last_name": "Толегенова",
+          "type": "private"
+        },
+        "date": 1610207941,
+        "text": "jhjk"
+      }
+    }
+  ]
+}

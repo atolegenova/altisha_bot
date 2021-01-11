@@ -10,11 +10,11 @@ class Data:
     def create_db(self):
         with self.connection:
             self.cursor.execute(
-            """CREATE TABLE IF NOT EXISTS 'users'(
-            user_id INTEGER PRIMARY KEY,
-            first_name TEXT,
-            phone TEXT);"""
-        )
+                """CREATE TABLE IF NOT EXISTS 'users'(
+                user_id INTEGER PRIMARY KEY,
+                first_name TEXT,
+                phone TEXT);"""
+            )
         self.connection.commit()
 
     def get_users(self):
@@ -22,14 +22,22 @@ class Data:
             return self.cursor.execute("SELECT * FROM 'users'").fetchall()
 
     def add_user(self, user_id, first_name, phone):
+        try:
+            with self.connection:
+                return self.cursor.execute(
+                    f"INSERT INTO 'users' ('user_id', 'first_name', 'phone') VALUES(?, ?, ?)",
+                    (user_id, first_name, phone)
+                )
+        except Exception as ex:
+            print(ex)
+
+    def update_user(self, user_id, phone):
         with self.connection:
-            return self.cursor.execute(
-                f"INSERT INTO 'users' ('user_id', 'first_name', 'phone') VALUES(?, ?, ?)", (user_id, first_name, phone)
-            )
+            return self.cursor.execute(f"UPDATE 'users' SET 'phone'=? WHERE 'user_id'=?", (phone, user_id))
+
+    def delete_user(self, user_id):
+        with self.connection:
+            return self.cursor.execute(f"DELETE FROM 'users' WHERE 'user_id'=?", (user_id,))
 
     def close(self):
         self.connection.close()
-
-
-db = Data('db.db')
-print(db.get_users())
